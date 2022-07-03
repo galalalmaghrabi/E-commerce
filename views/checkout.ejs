@@ -1,0 +1,10 @@
+<%- include('parts/head')  %>
+<%- include('parts/navbar')  %>
+<div class="container-fuild" style="height: 70vh;display: flex;align-items: center;justify-content: center;background-color: hsl(0, 0%, 96%);">
+    <form action="/cart/checkout/order" method="post" style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+        <input type="text" class="form-control" name="address" id="exampleInputEmail1" aria-describedby="address" size="50px" placeholder="Enter Your Address Please">
+        <input type="text" class="form-control" name="phone" id="exampleInputEmail1" aria-describedby="address" size="50px" placeholder="Enter Your Phone Number Please" style="margin-top: 20px;">
+        <button type="submit" class="btn btn-outline-dark" style="margin-top: 30px;height: 40px;text-transform: capitalize;font-size: 20px;">order</button>
+    </form>
+</div>
+<%- include('parts/footer')  %> 

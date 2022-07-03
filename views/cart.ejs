@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../styleTwo.css">
+
+    <title>
+        
+        <%= title %>
+    </title>
+
+	<link rel="stylesheet" type="text/css" href="../cart.css">
+
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+	.deleteAll{
+		border: 1px solid black;
+		margin: 20px 0px;
+		padding-left: 20px;
+		padding-right: 20px;
+
+	}
+	.deleteAll:hover{
+		color: black;
+		background-color: white;
+		transition: .7s ease;
+		padding-left: 50px;
+		padding-right: 50px;
+
+	}
+</style>
+</head>
+<%- include('parts/navbar')  %>
+
+<div class="container">
+
+	<h1>Shopping Cart</h1>
+
+	<div class="cart">
+        
+		<div class="products">
+            <% let totalPrice = 0 %> 
+            <% if(items.length  === 0){%>
+                <p class="alert alert-danger">there is no items</p>
+            <% }else{ %>
+                <% for ( let item of items){%> 
+                    <%                    totalPrice = totalPrice + item.price * item.amount              %> 
+			<div class="product">
+
+				<img src="/<%= item.image %>">
+
+				<div class="product-info">
+					<h3 class="product-name"><%= item.name %> </h3>
+					<h4 class="product-price">$<%= item.price %></h4>
+					<p class="product-quantity">Qnt: <span style="font-weight: bold;font-size: 25px;color: red;display: inline;"><%= item.amount %></span>  </p>
+                    <p> total: $<%= item.price * item.amount  %>  </p>
+                    <form action="/cart/delete" method="post">
+                            <input type="hidden" name="itemId" value="<%= item._id %>">
+                            <button class="product-remove" >
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                <span class="remove" >Remove</span>
+                            </button>
+                    </form>
+
+				</div>
+			</div>
+            <% } %> 
+            <% } %> 
+
+
+		</div>
+
+		<div class="cart-total">
+
+			<p>
+
+				<span>Total Price</span>
+
+				<span>$ <%= totalPrice  %> </span>
+
+			</p>
+
+			<p>
+
+				<span>Number of Items</span>
+
+				<span> <%= items.length  %> </span>
+
+			</p>
+
+			<p>
+
+				<span>You Save</span>
+
+				<span> $ 1000</span>
+
+			</p>
+			
+		
+				<% if(items.length > 0){ %>  
+			<form action="/cart/checkout" method="post">
+				<button style="text-align: center; color: white;width: 100%;"><a>Proceed to Checkout</a></button>
+			</form>
+			<% } %> 
+
+		</div>
+	</div>
+	
+		<div class="row">
+			<% if(items.length > 0){ %> 
+				<form action="/cart/deleteAll" method="post">
+					<button style="text-align: center;" class="btn deleteAll">Delete All</button>
+				</form>
+
+				<% } %>
+		</div>
+		
+</div>
+
+
+<%- include('parts/footer')  %> 
+</body>
+<script>
+    
+</script>
+
+</html>
+
+
+

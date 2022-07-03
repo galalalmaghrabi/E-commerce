@@ -1,0 +1,43 @@
+<%- include('parts/head') %>
+  <%- include('parts/navbar') %>
+    <div class="products">
+      <% if(products.length === 0){ %>
+        <p class="alert alert-danger">Not Products Found !!</p>
+        <% } else { %>
+          <div class="container">
+            <form action="/" class="filter" method="get">
+              <select name="category" id="category">
+                <option value="all">all</option>
+                <option value="clothes">clothes</option>
+                <option value="T-shirts">T-shirts</option>
+                <option value="phones">phones</option>
+                <option value="Shoes">Shoes</option>
+                Shoes
+              </select>
+              
+              <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+            <div class="product-items row">
+              <% for(let product of products) {%>
+                <div class="card col-sm-12 col-xl-3 d-flex">
+                  <img src="<%= product.image  %> " alt="">
+                  <h2><a href="/product/<%= product._id %> "><%= product.name %> </a></h2>
+                  <p class="desc"> <%= product.desc  %>  </p>
+                  <p class="price"> $<%= product.price %>.00  </p>
+                  <form action="/cart" method="post">
+                    <input type="hidden" name="price" value="<%= product.price  %>">
+                    <input type="hidden" name="name" value="<%= product.name  %>">
+                    <input type="hidden" name="productId" value="<%= product._id  %>">
+                    <input type="hidden" name="image" value="<%= product.image  %>">
+                    <input type="hidden" name="redirectTo" value="/">
+                    <input type="number" name="amount" class="form-control" min="1" max="10" value="1" required>
+                    <button class="btn btn-primary" formaction="/cart" formmethod="post">add to cart</button>
+                  </form>
+                </div>
+                <% } %>
+            </div>
+          </div>
+          <% } %>   
+    </div>
+
+    <%- include('parts/footer') %>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../styleTwo.css">
+
+    <title>
+        
+        <%= title %>
+    </title>
+
+	<link rel="stylesheet" type="text/css" href="../cart.css">
+
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+	.deleteAll{
+		border: 1px solid black;
+		margin: 20px 0px;
+		padding-left: 20px;
+		padding-right: 20px;
+
+	}
+	.deleteAll:hover{
+		color: black;
+		background-color: white;
+		transition: .7s ease;
+		padding-left: 50px;
+		padding-right: 50px;
+
+	}
+</style>
+</head>
+<%- include('parts/navbar')  %>
+
+<div class="container">
+
+	<h1>Your Orders</h1>
+
+	<div class="cart">
+        
+		<div class="products">
+            
+            <% if(items.length  === 0){%>
+                <p class="alert alert-danger">there is no Orders</p>
+            <% }else{ %>
+                <% for ( let item of items){%> 
+			<div class="product">
+
+				<img src="/<%= item.image %>">
+                    <div class="container" style="display: flex;justify-content: center;
+                    align-items: center;">
+
+                        status : <a href=""> <%= item.status  %>  </a>
+                    </div>
+				<div class="product-info">
+					<h3 class="product-name"><%= item.name %> </h3>
+					<h4 class="product-price">$<%= item.price %></h4>
+					<p class="product-quantity">Qnt: <span style="font-weight: bold;font-size: 25px;color: red;display: inline;"><%= item.amount %></span>  </p>
+                    <p> total: $<%= item.price * item.amount  %>  </p>
+                    <p>status : <%= item.status  %> </p>
+                    <form action="/cart/order/delete" method="post">
+                            <input type="hidden" name="itemId" value="<%= item._id %>">
+                            <input type="hidden" name="productId" value="<%= item.productId %>">
+                            <button class="product-remove" >
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                <span class="remove" >Remove</span>
+                            </button>
+                    </form>
+
+				</div>
+			</div>
+            <% } %> 
+            <% } %> 
+
+
+		</div>
+
+
+	</div>
+	
+
+		
+</div>
+
+
+<%- include('parts/footer')  %> 
+</body>
+<script>
+    
+</script>
+
+</html>
+
+
+

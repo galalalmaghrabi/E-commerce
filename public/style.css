@@ -1,0 +1,84 @@
+
+/* ================= form ================= */
+body{
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+}
+.navbar {
+    width: 100vw !important;
+}
+.signup{
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    
+}
+.form-group {
+    width: 100%;
+}
+.form-group input{
+    width: 100%;
+}
+.form-group input::placeholder{
+    text-transform: capitalize
+}
+.form-group .input-name{
+    width: 48%;
+
+}
+.wrapper {
+    padding-left: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(45deg,#F17C58, #E94584, #24AADB , #27DBB1,#736307, #FF3706);
+    background-size: 600% 100%;
+    animation: gradient 16s linear infinite;
+    animation-direction: alternate;
+
+}
+@keyframes gradient {
+    0% {background-position: 0%}
+    100% {background-position: 100%}
+}
+.alert-danger{
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 17px;
+}
+
+.filter{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding-top: 20px;
+}
+.filter select {
+    margin-right: 20px;
+    font-size: 17px;
+    width: 200px;
+    cursor: pointer;
+}
+.filter select option{
+    cursor: pointer;
+}
+.filter button {
+    margin-left: 20px;
+    font-size: 20px;
+    padding: 5px 10px;
+}
+footer{
+    width: 100%;
+    text-align: center;
+    background-color: #343a40;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+}

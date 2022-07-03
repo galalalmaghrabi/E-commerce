@@ -1,0 +1,40 @@
+<%- include('parts/head') %>
+  <%- include('parts/navbar') %>
+    <div class="container  col-sm-12 cpl-md-8 col-lg-6 col-xl-6"
+      style="height: 100vh;display: flex;flex-direction: column;justify-content: center;align-items: center;">
+      <form action="/admin/add" method="post" enctype="multipart/form-data">
+        <div class="">
+          <div class="form-group col-12">
+            <label for="inputEmail4">name</label>
+            <input type="text" class="form-control col-12" id="inputEmail4" name="name">
+          </div>
+          <div class="form-group col-md-12 col-12 d-flex" style="flex-wrap: wrap;">
+            <input type="file" class="form-control col-6" id="inputPassword4" name="image">
+            <input type="file" class="form-control col-6" id="inputPassword4" name="imageTwo">
+            <input type="file" class="form-control col-6" id="inputPassword4" name="imageThree">
+            <input type="file" class="form-control col-6" id="inputPassword4" name="imageFour">
+          </div>
+
+        </div>
+        <div class="form-group col-12">
+          <label for="inputAddress">description</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="........." name="desc">
+        </div>
+        <div class="form-group col-md-12">
+          <label for="inputState">category</label>
+          <select id="inputState" class="form-control" name="category">
+            <option value="all">all</option>
+            <option value="clothes">clothes</option>
+            <option value="T-shirts">T-shirts</option>
+            <option value="phones">phones</option>
+            <option value="Shoes">Shoes</option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputZip">price</label>
+          <input type="text" class="form-control" id="inputZip" name="price">
+        </div>
+        <button type="submit" class="btn btn-primary" style="height: 40px; margin-left: 20px;">Add</button>
+      </form>
+    </div>
+    <%- include('parts/footer') %>
